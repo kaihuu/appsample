@@ -15,6 +15,7 @@ class ReferencesController < ApplicationController
   # GET /references/new
   def new
     @reference = Reference.new
+    @reference.paper.build
   end
 
   # GET /references/1/edit
@@ -25,7 +26,7 @@ class ReferencesController < ApplicationController
   # POST /references.json
   def create
     @reference = Reference.new(reference_params)
-    #print(reference_params[:Type])
+    print(reference_params[:papers_attributes])
     respond_to do |format|
       if @reference.save
         format.html { redirect_to @reference, notice: 'Reference was successfully created.' }
@@ -65,17 +66,11 @@ class ReferencesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_reference
       @reference = Reference.find(params[:id])
-      @paper = Paper.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reference_params
-      params.require(:reference).permit(:Title, :Type, )
+      params.require(:reference).permit(:Title, :Type, paper_attributes: [:paper_id, :released_date, :start_page, :end_page, :publisher])
     end
-
-    def paper_params
-      params.require(:paper).permit(:paper_id, :released_date, :start_page, :end_page, :publisher)
-    end
-
 
 end

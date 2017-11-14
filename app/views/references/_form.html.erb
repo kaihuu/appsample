@@ -21,7 +21,30 @@
     <%= form.collection_select(:Type, Type.all, :id, :name, {}, {:id => "reference_Type"}) %>
   </div>
 
+    <%= form.fields_for :paper do |p| %>
 
+      <div class="field">
+        <%= p.label :released_date %>
+        <%= p.text_field :released_date, id: :released_date %>
+      </div>
+
+      <div class="field">
+        <%= p.label :start_page %>
+        <%= p.text_field :start_page, id: :start_page %>
+      </div>
+
+      <div class="field">
+        <%= p.label :end_page %>
+        <%= p.text_field :end_page, id: :end_page %>
+      </div>
+
+      <div class="field">
+        <%= p.label :publisher %>
+        <%= p.text_field :publisher, id: :publisher %>
+      </div>
+  
+  <% end %>
+      
   <div class="actions">
     <%= form.submit %>
   </div>

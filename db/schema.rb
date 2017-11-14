@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171114092421) do
 
-  create_table "papers", primary_key: "paper_id", force: :cascade do |t|
+  create_table "papers", primary_key: "reference_id", force: :cascade do |t|
     t.date "released_date"
     t.integer "start_page"
     t.integer "end_page"
