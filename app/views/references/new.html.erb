@@ -3,3 +3,8 @@
 <%= render 'form', reference: @reference %>
 
 <%= link_to 'Back', references_path %>
+
+<script>
+$("#reference[Title]").prop("disabled", false);
+alert("hello world!");
+</script>
