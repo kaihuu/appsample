@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :Type %>
-    <%= form.collection_select(:Type, Type.all, :id, :name) %>
+    <%= form.collection_select(:Type, Type.all, :id, :name, {}, {:id => "reference_Type"}) %>
   </div>
 
 

@@ -65,10 +65,17 @@ class ReferencesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_reference
       @reference = Reference.find(params[:id])
+      @paper = Paper.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reference_params
-      params.require(:reference).permit(:Title, :Type)
+      params.require(:reference).permit(:Title, :Type, )
     end
+
+    def paper_params
+      params.require(:paper).permit(:paper_id, :released_date, :start_page, :end_page, :publisher)
+    end
+
+
 end

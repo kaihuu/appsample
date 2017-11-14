@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111150345) do
+ActiveRecord::Schema.define(version: 20171114092421) do
+
+  create_table "papers", primary_key: "paper_id", force: :cascade do |t|
+    t.date "released_date"
+    t.integer "start_page"
+    t.integer "end_page"
+    t.string "publisher"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "references", force: :cascade do |t|
     t.string "Title"
