@@ -15,7 +15,7 @@ class ReferencesController < ApplicationController
   # GET /references/new
   def new
     @reference = Reference.new
-    @reference.paper.build
+    @reference.build_paper
   end
 
   # GET /references/1/edit
@@ -26,7 +26,7 @@ class ReferencesController < ApplicationController
   # POST /references.json
   def create
     @reference = Reference.new(reference_params)
-    print(reference_params[:papers_attributes])
+    #print(reference_params[:papers_attributes])
     respond_to do |format|
       if @reference.save
         format.html { redirect_to @reference, notice: 'Reference was successfully created.' }
@@ -70,7 +70,7 @@ class ReferencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reference_params
-      params.require(:reference).permit(:Title, :Type, paper_attributes: [:paper_id, :released_date, :start_page, :end_page, :publisher])
+      params.require(:reference).permit(:Title, :Type, paper_attributes: [:released_date, :start_page, :end_page, :publisher])
     end
 
 end
